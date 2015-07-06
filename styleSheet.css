@@ -1,0 +1,36 @@
+.container {
+  position: relative;
+  text-align: center;
+}
+
+.photo-container {
+  text-align: center;
+}
+
+.nav a {
+  color: #5a5a5a;
+  font-size: 21px;
+  font-weight: bold;
+  padding: 14px 10px;
+  text-transform: uppercase;
+}
+
+.nav li {
+  display: inline;
+  text-align: center;
+}
+
+.title h1 {
+  color: #000;
+  font-size: 48px;
+  font-family: 'Shift', sans-serif;
+  font-weight: bold;
+  text-align: center;
+}
+
+.intro {
+
+  font-size: 18px;
+  font-family: 'Shift', sans-serif;
+
+}
