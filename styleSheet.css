@@ -1,6 +1,9 @@
 .container {
   position: relative;
   text-align: center;
+  padding-left: 55px;
+  height : -500px;
+
 }
 
 .photo-container {
@@ -16,9 +19,23 @@
 }
 
 .nav li {
-  display: inline;
   text-align: center;
+  display: inline;
 }
+
+/*.nav ul li ul li {
+  display: list-item;
+  text-align: center;
+  position: relative;
+  font-family: 'Shift', sans-serif;
+  width: 250px;
+  height: 20px;
+  float: left;
+}*/
+
+/*.nav ul li ul li a {
+  font-family: 'Shift', sans-serif;
+ }*/
 
 .title h1 {
   color: #000;
@@ -31,6 +48,15 @@
 .intro {
 
   font-size: 18px;
+  font-family: 'Shift', sans-serif;
+
+}
+
+.dropdown-menu {
+  display: inline;
+  position: relative;
+  text-align: center;
+  float: none;
   font-family: 'Shift', sans-serif;
 
 }
