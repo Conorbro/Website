@@ -2,12 +2,29 @@
   position: relative;
   text-align: center;
   padding-left: 55px;
-  height : -500px;
+}
 
+.container iframe {
+  padding-top: 30px;
+}
+
+.container-project {
+  font-family: 'Shift', sans-serif;
+  font-size: 18px;
+  width: 400px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.container-project li {
+  margin: 0 0 5px 0;
 }
 
 .photo-container {
   text-align: center;
+  width: auto;
+  height: auto;
+  padding-top: 20px;
 }
 
 .nav a {
@@ -22,20 +39,6 @@
   text-align: center;
   display: inline;
 }
-
-/*.nav ul li ul li {
-  display: list-item;
-  text-align: center;
-  position: relative;
-  font-family: 'Shift', sans-serif;
-  width: 250px;
-  height: 20px;
-  float: left;
-}*/
-
-/*.nav ul li ul li a {
-  font-family: 'Shift', sans-serif;
- }*/
 
 .title h1 {
   color: #000;
