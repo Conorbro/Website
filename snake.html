@@ -2,6 +2,8 @@
 <HTML>
 	<HEAD>
 		<TITLE>Shnaaaake</TITLE>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="jquery.touchSwipe.min.js"></script>
 	</HEAD>
 
 	<HEADER>
@@ -23,6 +25,7 @@
 		var dx = 1;
 		var dy = 1;
 		var score = 0;
+		var dir_i = 0;
 		var highscore = 0;
 		var snake_array;
 		var powerUp = {
@@ -38,12 +41,14 @@
     };
 
 		document.addEventListener("keydown", onKeyDown, false);
+		document.addEventListener("touch")
 
 		function init() {
 			ctx = canvas.getContext("2d");
 			init_snake();
 			makePowerUp();
 			setInterval(gameLoop, 70);
+
 		}
 
 		function init_snake(){
@@ -100,7 +105,7 @@
 
 			drawSnake(powerUp.x, powerUp.y);
 
-			//
+			//pops tail from snake, assigns it new values, pushes to head
 			var tail = snake_array.pop();
 			tail.x = nx;
 			tail.y = ny;
@@ -121,6 +126,56 @@
 					}
 				}
 			}
+
+			//Touch Controls - Not Working Properly :( )
+
+			var obj = document.getElementById('canvas');
+			obj.addEventListener('touchstart', function(event) {
+				if(dir_i + 1 < directions.length) {
+				dir = directions[dir_i + 1];
+				dir_i += 1;
+			}
+
+			else {
+				dir_i = 0;
+				dir = directions[dir_i];
+			}
+			})
+
+			$(function() {
+				var directions = ["right", "down", "left", "up"];
+				$('#canvas').swipe({
+					swipe: function(event, direction, distance, duration, fingerCount) {
+							switch (direction) {
+								case "left":
+									dir = "left";
+									break;
+								case "right":
+									dir = "right";
+									break;
+								case "up":
+									dir = "up";
+									break;
+								case "down":
+									dir = "down";
+									break;
+							}
+							if(event) {
+								if(dir_i + 1 < directions.length) {
+								dir = directions[dir_i + 1];
+								dir_i += 1;
+							}
+
+							else {
+								dir_i = 0;
+								dir = directions[dir_i];
+							}
+
+							}
+					}
+				});
+		});
+
     }
 
 		// Draws each element of the snake array
@@ -163,6 +218,8 @@
 				dir = "right";
 			}
 		}
+
+
 
 	</SCRIPT>
 
