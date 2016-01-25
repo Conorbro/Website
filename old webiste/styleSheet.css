@@ -1,0 +1,141 @@
+.container {
+  position: relative;
+  text-align: center;
+  padding-left: 55px;
+}
+
+.container iframe {
+  padding-top: 30px;
+}
+
+.container-project {
+  font-family: 'Shift', sans-serif;
+  font-size: 18px;
+  width: 400px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.container-project li {
+  margin: 0 0 5px 0;
+}
+
+.photo-container {
+  text-align: center;
+  width: auto;
+  height: auto;
+  padding-top: 20px;
+}
+
+.nav a {
+  color: #5a5a5a;
+  font-size: 21px;
+  font-weight: bold;
+  padding: 14px 10px;
+  text-transform: uppercase;
+}
+
+.nav li {
+  text-align: center;
+  display: inline;
+}
+
+.title h1 {
+  color: #000;
+  font-size: 48px;
+  font-family: 'Shift', sans-serif;
+  font-weight: bold;
+  text-align: center;
+}
+
+.intro {
+
+  font-size: 18px;
+  font-family: 'Shift', sans-serif;
+
+}
+
+.dropdown-menu {
+  display: none;
+  position: relative;
+  text-align: center;
+  float: none;
+  font-family: 'Shift', sans-serif;
+
+}
+
+.site-navigation {
+	display: block;
+	font-family: 'Shift', sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+	margin: 40px;
+  position: relative;
+  text-align: center;
+  padding-left: 55px;
+}
+
+.site-navigation ul {
+  background: #3498DB;
+	list-style: none;
+	margin: 0;
+	padding-left: 0;
+}
+
+.site-navigation li {
+	color: #fff;
+  background: #3498DB;
+	display: block;
+	margin: 0 2px 0 0;
+  float: right
+  text-align: center;
+  display: right;
+}
+
+.site-navigation li a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+}
+
+.site-navigation li:hover {
+	@include transition(background, 0.2s);
+	background: #52a6df;
+	cursor: pointer;
+}
+
+.site-navigation ul li ul {
+	background: #52a6df;
+	visibility: hidden;
+	float: left;
+  min-width: 150px;
+	position: absolute;
+  transition: visibility 0.65s ease-in;
+  margin-top:12px;
+	left: 0;
+	z-index: 999;
+}
+
+.site-navigation ul li:hover > ul,
+.site-navigation ul li ul:hover {
+   visibility: visible;
+   position: relative;
+}
+
+.site-navigation ul li ul li {
+	clear: both;
+	padding: 5px 0 5px 18px;
+  width: 100%;
+}
+
+.site-navigation ul li ul li:hover {
+	background: #74b7e4;
+}
+
+.site-navigation a {
+  color: #5a5a5a;
+  font-size: 21px;
+  font-weight: bold;
+  padding: 14px 10px;
+  text-transform: uppercase;
+}

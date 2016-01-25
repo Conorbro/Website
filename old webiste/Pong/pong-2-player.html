@@ -1,0 +1,192 @@
+<style>
+#pong {
+	 width: 500px;
+	 height:400px;
+	 margin: 0px auto;
+ }
+</style>
+
+<html>
+<title>Pong!</title>
+
+      <script>
+
+        var context;
+        var width = 500;
+        var height = 400;
+        var ballX = width/2;
+        var ballY = height/2;
+        var ballRadius = 10
+        var paddleWidth = 15;
+        var paddleHeight = 100;
+        var paddleX1 = 0;
+        var paddleY1 = 0;
+        var paddleX2 = width - paddleWidth;
+        var paddleY2 = height - paddleHeight;
+        var paddle1Dy = 7;
+        var paddle2Dy = 7;
+        var p1Up = false;
+        var p1Down= false;
+        var p2Up = false;
+        var p2Down = false;
+        var dx = 5;
+        var dy = 5;
+        var player1Score = 0;
+        var player2Score = 0;
+				var start = false;
+        var wait = false;
+        var goalSound = new Audio("goal.wav");
+        var hitSound = new Audio("hit.wav");
+        var wallHitSound = new Audio("wallHit.wav");
+
+        function init() {
+        	context = myCanvas.getContext('2d');
+        	setInterval(gameLoop, 15); //Draws new frame every 20ms
+        }
+
+        function gameLoop() {
+					if(wait) {
+            setTimeout(function() {
+              wait = false;
+            }, 250);
+          } else {
+            draw();
+            checkCollisions();
+            movePaddles();
+          }
+        }
+
+        function draw() {
+          document.getElementById("player-1-score-display").innerHTML = "Player 1 Score = " + player1Score;
+          document.getElementById("player-2-score-display").innerHTML = "Player 2 Score = " + player2Score;
+          context.clearRect(0, 0, width, height);
+          context.beginPath();
+          context.rect(paddleX1, paddleY1, paddleWidth, paddleHeight);
+          context.rect(paddleX2, paddleY2, paddleWidth, paddleHeight);
+          context.arc(ballX, ballY, ballRadius, 0, Math.PI*2, true);
+          context.fillStyle = "#000000";
+          context.closePath();
+          context.fill();
+        }
+
+        function checkCollisions() {
+          if ( ballX <= paddleWidth - 5) { // Check if a point has been scored
+            ballX = width/2 - 10;
+            player2Score += 1;
+            goalSound.play();
+            dx = -dx;
+            wait = true;
+          }
+          if (ballX >= width - paddleWidth + 5) {
+            ballX = width/2 - 10;
+            player1Score += 1;
+            goalSound.play();
+            dx = -dx;
+            wait = true;
+          }
+          if ( ballY<0 || ballY>height) { // check if ball hits roof or floor
+            dy = -dy;
+            wallHitSound.play();
+          }
+          if (ballX <= paddleX1 + paddleWidth && ballY <= paddleY1 + paddleHeight && ballY >= paddleY1) {
+            hitSound.play();
+            dx = -dx;
+          }
+          if (ballX >= paddleX2 && ballY <= paddleY2 + paddleHeight && ballY >= paddleY2) {
+            hitSound.play();
+            dx = -dx;
+          }
+
+          ballX += dx;
+          ballY += dy;
+        }
+
+        function movePaddles(){
+          if(p1Up) {
+            if (paddleY1 >= 0) {
+      			     paddleY1 -= paddle1Dy;
+               }
+          }
+          if(p1Down) {
+            if (paddleY1 <= height - paddleHeight) {
+                 paddleY1 += paddle1Dy;
+               }
+          }
+          if(p2Up) {
+            if (paddleY2 >= 0) {
+                 paddleY2 -= paddle2Dy;
+               }
+          }
+          if(p2Down) {
+            if (paddleY2 <= height - paddleHeight) {
+                 paddleY2 += paddle2Dy;
+               }
+          }
+        }
+
+        // Event Listeners for paddle controls
+      	function onKeyDownPlayer1(evt) {
+      		if (evt.keyCode == 87) {
+            p1Up = true;
+            p1Down = false;
+      		}
+      		else if (evt.keyCode == 83) {
+            p1Down = true;
+            p1Up = false;
+      		}
+    		}
+        function onKeyDownPlayer2(evt) {
+          if (evt.keyCode == 38) {
+            p2Up = true;
+            p2Down = false;
+          }
+          else if (evt.keyCode == 40) {
+            p2Down = true;
+            p2Up = false;
+          }
+        }
+        function onKeyUpPlayer1(evt) {
+      		if (evt.keyCode == 87) {
+            p1Up = false;
+      		}
+      		else if (evt.keyCode == 83) {
+            p1Down = false;
+      		}
+    		}
+        function onKeyUpPlayer2(evt) {
+          if (evt.keyCode == 38) {
+            p2Up = false;
+          }
+          else if (evt.keyCode == 40) {
+            p2Down = false;
+          }
+        }
+
+				function onKeyDownStartGame(evt) {
+					if(evt.keyCode == 32 && start == false) {
+						init();
+						start = true
+					}
+				}
+
+				document.addEventListener("keydown", onKeyDownStartGame);
+        document.addEventListener("keydown", onKeyDownPlayer1);
+        document.addEventListener("keydown", onKeyDownPlayer2);
+        document.addEventListener("keyup", onKeyUpPlayer1);
+        document.addEventListener("keyup", onKeyUpPlayer2);
+      </script>
+
+  <body>
+		<div id="pong">
+			<p><img src="computer_key_W.png" height="32" width="32"> <img src="computer_key_S.png" height="32" width="32"> Controls Player 1 - <img src="computer_key_Arrow_Up.png" height="32" width="32"><img src="computer_key_Arrow_Down.png" height="32" width="32"> Controls Player 2</p>
+			<p>Press <img src="computer_key_Space_bar.png" height="32" width="200"> To Start!</p>
+			<p id="player-1-score-display"></p>
+			<p id="player-2-score-display"></p>
+    <section style = "border-style: solid; border-widt: 2px; width: 500px;">
+      <canvas id="myCanvas" width="500" height="400">
+      </canvas>
+    </section>
+	</div>
+  </body>
+
+</html>

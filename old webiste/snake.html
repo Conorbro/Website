@@ -1,23 +1,18 @@
 <!DOCTYPE HTML>
+<style>
+	#snake {
+		width: 500px;
+		height:400px;
+		margin: 0px auto;
+	}
+</style>
+
 <HTML>
 	<HEAD>
 		<TITLE>Shnaaaake</TITLE>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script src="jquery.touchSwipe.min.js"></script>
 	</HEAD>
-
-	<HEADER>
-		<P font = "sans serif">Click in the box to begin - WASD keys to move</P>
-	</HEADER>
-
-	<br>
-
-	<p id="highscore-display"></p>
-
-	<br>
-
-	<p id="score-display"></p>
-
 
 	<SCRIPT>
 
@@ -224,10 +219,15 @@
 	</SCRIPT>
 
 	<BODY onLoad="init();">
-		<SECTION style="border-style: solid; border-width: 2px; width: 500px;">
-			<CANVAS id="canvas" WIDTH="500" HEIGHT="400">
-			</CANVAS>
-		</SECTION>
+		<div id="snake">
+			<p font = "sans serif">WASD keys to move</p>
+			<p id="highscore-display"></p>
+			<p id="score-display"></p>
+			<SECTION style="border-style: solid; border-width: 2px; width: 500px;">
+				<CANVAS id="canvas" WIDTH="500" HEIGHT="400">
+				</CANVAS>
+			</SECTION>
+	</div>
 	</BODY>
 
 </HTML>
